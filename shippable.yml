@@ -5,9 +5,6 @@ language: node_js
 node_js:
   - 0.12
 
-services:
-  - mongodb
-  - memcached
 
 build:
   pre_ci_boot:
@@ -17,19 +14,9 @@ build:
     options: '--privileged=true --net=bridge'
   
   ci:
-    - source ~/.nvm/nvm.sh && nvm install $SHIPPABLE_NODE_VERSION
-    - shippable_retry npm install
-    - node --version
-    - sudo npm install -g istanbul
-    - sudo mongo --eval 'db.collection.find()'
     - ls -a
     - echo "œ"
   
-  on_success:
-    - sudo mongo test --eval "db.dropDatabase()"
-
-  on_failure:
-    - sudo mongo test --eval "db.dropDatabase()"
 
 integrations:
   notifications:

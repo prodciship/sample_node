@@ -17,6 +17,7 @@ build:
 
   pre_ci:
     - echo "this is master branch with preci"
+    - echo $DOCKER_USERNAME
 
   post_ci:
     - docker info

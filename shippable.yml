@@ -26,6 +26,7 @@ integrations:
       recipients:
         - chandrakanth@shippable.com
         - vishal.chandru@gmail.com
+        - anustarship@gmail.com
       on_start: never
       on_success: change
       on_failure: always

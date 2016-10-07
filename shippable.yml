@@ -17,6 +17,7 @@ build:
     - source ~/.nvm/nvm.sh && nvm install $SHIPPABLE_NODE_VERSION
     - shippable_retry npm install
     - node --version
+    - abdc
 
 integrations:
   notifications:

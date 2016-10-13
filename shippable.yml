@@ -6,15 +6,10 @@ node_js:
   - 0.12
 
 build:
-
-  pre_ci:
-    # Always pull the latest base image to avoid any cached images on the host
-    - docker build --rm -t kanthchandra/u12nod:tip .
-
   pre_ci_boot:
-    image_name: kanthchandra/u12nod
+    image_name: dry-dock/u12nod
     image_tag: tip
-    pull: true
+    pull: false
     options: '--privileged=true --net=bridge'
   
   ci:
@@ -25,7 +20,9 @@ build:
     # - sudo npm install -g istanbul
     # - sudo mongo --eval 'db.collection.find()'
     # - ls -a
-  
+  post_ci:
+    # Always pull the latest base image to avoid any cached images on the host
+    - docker build --rm -t kanthchandra/u12node:tip .
 #   on_success:
 #     - sudo mongo test --eval "db.dropDatabase()"
 

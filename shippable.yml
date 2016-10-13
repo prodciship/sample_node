@@ -5,13 +5,13 @@ language: node_js
 node_js:
   - 0.12
 
-services:
-  - mongodb
-  - memcached
+# services:
+#   - mongodb
+#   - memcached
 
 build:
   pre_ci_boot:
-    image_name: drydock/u14nodall
+    image_name: drydock/u12nod
     image_tag: prod
     pull: true
     options: '--privileged=true --net=bridge'
@@ -20,27 +20,27 @@ build:
     - source ~/.nvm/nvm.sh && nvm install $SHIPPABLE_NODE_VERSION
     - shippable_retry npm install
     - node --version
-    - sudo npm install -g istanbul
-    - sudo mongo --eval 'db.collection.find()'
-    - ls -a
+    # - sudo npm install -g istanbul
+    # - sudo mongo --eval 'db.collection.find()'
+    # - ls -a
   
-  on_success:
-    - sudo mongo test --eval "db.dropDatabase()"
+#   on_success:
+#     - sudo mongo test --eval "db.dropDatabase()"
 
-  on_failure:
-    - sudo mongo test --eval "db.dropDatabase()"
+#   on_failure:
+#     - sudo mongo test --eval "db.dropDatabase()"
 
-integrations:
-  notifications:
-    - integrationName: "ship-slack"
-      type: Slack
-      recipients:
-        - "#slacktestck"
-      branches:
-        only:
-          - master
-      on_success: always
-      on_start: always
-      on_pull_request: always
-      on_failure: always
+# integrations:
+#   notifications:
+#     - integrationName: "ship-slack"
+#       type: Slack
+#       recipients:
+#         - "#slacktestck"
+#       branches:
+#         only:
+#           - master
+#       on_success: always
+#       on_start: always
+#       on_pull_request: always
+#       on_failure: always
 

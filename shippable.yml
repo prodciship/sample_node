@@ -7,10 +7,17 @@ node_js:
 
 services:
   - rethinkDB
+  - mysql
+  - mongodb
+  - elasticsearch
+  - redis
+  - rabbitmq
+  - neo4j
+  - couchdb
 
 build:
   pre_ci_boot:
-    image_name: drydock/u12nodpls
+    image_name: drydock/u12nodall
     image_tag: prod
     pull: true
     options: '--privileged=true --net=bridge'

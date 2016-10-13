@@ -5,21 +5,16 @@ language: node_js
 node_js:
   - 0.12
 
-services:
-  - rethinkDB
-  - mysql
-  - mongodb
-  - elasticsearch
-  - redis
-  - rabbitmq
-  - neo4j
-  - couchdb
-
 build:
+
+  pre_ci:
+    # Always pull the latest base image to avoid any cached images on the host
+    - docker build --rm -t kanthchandra/u12nod:tip .
+
   pre_ci_boot:
-    image_name: drydock/u12nodall
-    image_tag: prod
-    pull: true
+    image_name: kanthchandra/u12nod
+    image_tag: tip
+    pull: false
     options: '--privileged=true --net=bridge'
   
   ci:

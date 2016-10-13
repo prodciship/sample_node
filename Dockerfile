@@ -1,4 +1,5 @@
-FROM drydock/u14nod:prod
+FROM drydock/u12:prod
 
-RUN mkdir -p /tmp/logs
-ADD . /src
+ADD . /u12nod
+
+RUN /u12nod/install.sh

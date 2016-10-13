@@ -6,12 +6,11 @@ node_js:
   - 0.12
 
 services:
-  - mongodb
-  - memcached
+  - rethinkDB
 
 build:
   pre_ci_boot:
-    image_name: drydock/u12nod
+    image_name: drydock/u12nodpls
     image_tag: prod
     pull: true
     options: '--privileged=true --net=bridge'

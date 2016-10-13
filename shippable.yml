@@ -14,7 +14,7 @@ build:
   pre_ci_boot:
     image_name: kanthchandra/u12nod
     image_tag: tip
-    pull: false
+    pull: true
     options: '--privileged=true --net=bridge'
   
   ci:

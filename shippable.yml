@@ -10,6 +10,11 @@ services:
   - memcached
 
 build:
+  pre_ci_boot:
+    image_name: drydock/u12nod
+    image_tag: prod
+    pull: true
+    options: '--privileged=true --net=bridge'
   
   ci:
     - source ~/.nvm/nvm.sh && nvm install $SHIPPABLE_NODE_VERSION

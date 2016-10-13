@@ -20,6 +20,7 @@ build:
     - source ~/.nvm/nvm.sh && nvm install $SHIPPABLE_NODE_VERSION
     - shippable_retry npm install
     - node --version
+    - sudo docker images
     # - sudo npm install -g istanbul
     # - sudo mongo --eval 'db.collection.find()'
     # - ls -a

@@ -27,9 +27,9 @@ integrations:
   notifications:
     - integrationName: "irc"
         type: irc
-	recipients:
+        recipients:
           - "chat.freenode.net#ck-rc-text"
-	on_success: always
-	on_start: always
-	on_pull_request: always
-	on_failure: always
+        on_success: always
+        on_start: always
+        on_pull_request: always
+        on_failure: always

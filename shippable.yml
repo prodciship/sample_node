@@ -13,33 +13,23 @@ build:
     options: '--privileged=true --net=bridge'
   
   ci:
-    - source ~/.nvm/nvm.sh && nvm install $SHIPPABLE_NODE_VERSION
-    - shippable_retry npm install
-    - node --version
-    - sudo docker images
-    # - sudo npm install -g istanbul
-    # - sudo mongo --eval 'db.collection.find()'
-    # - ls -a
-  post_ci:
+    - echo "testing"
+#  post_ci:
     # Always pull the latest base image to avoid any cached images on the host
-    - docker build --rm -t kanthchandra/u12node:tip .
+ #   - docker build --rm -t kanthchandra/u12node:tip .
 #   on_success:
 #     - sudo mongo test --eval "db.dropDatabase()"
 
 #   on_failure:
 #     - sudo mongo test --eval "db.dropDatabase()"
 
-# integrations:
-#   notifications:
-#     - integrationName: "ship-slack"
-#       type: Slack
-#       recipients:
-#         - "#slacktestck"
-#       branches:
-#         only:
-#           - master
-#       on_success: always
-#       on_start: always
-#       on_pull_request: always
-#       on_failure: always
-
+integrations:
+  notifications:
+    - integrationName: "irc"
+	   type: irc
+	   recipients:
+	     - "chat.freenode.net#ck-rc-text"
+	   on_success: always
+	   on_start: always
+	   on_pull_request: always
+	   on_failure: always

@@ -14,6 +14,7 @@ build:
   
   ci:
     - echo "testing"
+    - sudo docker images
 #  post_ci:
     # Always pull the latest base image to avoid any cached images on the host
  #   - docker build --rm -t kanthchandra/u12node:tip .

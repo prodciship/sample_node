@@ -5,6 +5,10 @@ language: node_js
 node_js:
   - 0.12
 
+env: 
+  - SHIP_NODE_VERSION=12.0
+  - SHIP_LANGUAGE=NODEJS
+
 build:
   pre_ci_boot:
     image_name: drydock/u12nod
@@ -15,22 +19,6 @@ build:
   ci:
     - echo "testing"
     - sudo docker images
-#  post_ci:
-    # Always pull the latest base image to avoid any cached images on the host
- #   - docker build --rm -t kanthchandra/u12node:tip .
-#   on_success:
-#     - sudo mongo test --eval "db.dropDatabase()"
+    - echo $SHIP_NODE_VERSION
+    - echo $SHIP_LANGUAGE
 
-#   on_failure:
-#     - sudo mongo test --eval "db.dropDatabase()"
-
-integrations:
-  notifications:
-    - integrationName: irc
-      type: irc
-      recipients:
-        - "chat.freenode.net#ck-rc-text"
-      on_success: always
-      on_start: always
-      on_pull_request: always
-      on_failure: always
